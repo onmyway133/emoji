@@ -55,7 +55,8 @@ func line(content: String) {
 
 title("emoji")
 br()
-line("Made with [Smile](https://github.com/onmyway133/Smile)")
+line("- Made with [Smile](https://github.com/onmyway133/Smile)")
+line("- Run `xcrun swift -F Carthage/Build/Mac/ script.swift` to update")
 br()
 
 for (category, list) in emojiCategories {
