@@ -60,7 +60,19 @@ br()
 line("- Run `xcrun swift -F Carthage/Build/Mac/ script.swift` to update")
 br()
 
-for (category, list) in emojiCategories {
+let categories = Array(emojiCategories.keys).sort { c1, c2 in
+  if c1 == "people" {
+    return true
+  }
+
+  if c1 == "objects" {
+    return true
+  }
+
+  return true
+}
+
+for (category) in categories {
   br()
   header(category)
   br()
@@ -78,6 +90,7 @@ for (category, list) in emojiCategories {
       tag("td", content: "name")
     }
 
+    let list = emojiCategories[category]!
     list.forEach { emoji in
       tag("tr") {
         tag("td", content: emoji)
