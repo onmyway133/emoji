@@ -48,7 +48,7 @@ func br() {
 }
 
 func line(content: String) {
-
+  add(content)
 }
 
 // MARK: - Main
