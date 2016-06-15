@@ -69,7 +69,7 @@ let categories = Array(emojiCategories.keys).sort { c1, c2 in
     return true
   }
 
-  return true
+  return c1 > c2
 }
 
 for (category) in categories {
