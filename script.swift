@@ -34,7 +34,7 @@ func tag(name: String, content: String) {
 }
 
 func header(content: String) {
-  add("## \(content)")
+  add("## \(content)\n")
 }
 
 // MARK: - Main
