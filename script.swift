@@ -33,20 +33,38 @@ func tag(name: String, content: String) {
   add("</\(name)>")
 }
 
+func header(content: String) {
+  add("## \(content)")
+}
+
 // MARK: - Main
 
 var result = ""
 
-tag("table") {
-  tag("colgroup") {
-    3.times {
-      add("<col>")
+for (category, list) in emojiCategories {
+  header(category)
+
+  tag("table") {
+    tag("colgroup") {
+      3.times {
+        add("<col>")
+      }
+    }
+
+    tag("tr") {
+      tag("td", content: "emoji")
+      tag("td", content: "alias")
+      tag("td", content: "name")
+    }
+
+    list.forEach { emoji in
+      tag("tr") {
+        tag("td", content: emoji)
+        tag("td", content: alias(emoji: Character(emoji)) ?? "")
+        tag("td", content: name(emoji: Character(emoji)).joinWithSeparator(","))
+      }
     }
   }
-
-  tag("tr", content: "emoji")
-  tag("tr", content: "alias")
-  tag("tr", content: "name")
 }
 
 // MARK: - Write
