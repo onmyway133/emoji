@@ -17,6 +17,8 @@ extension Int {
 
 // MARK: - Helper
 
+var result = ""
+
 func add(string: String) {
   result += string
 }
@@ -34,15 +36,32 @@ func tag(name: String, content: String) {
 }
 
 func header(content: String) {
-  add("## \(content)\n")
+  add("## \(content)")
+}
+
+func title(content: String) {
+  add("# \(content)")
+}
+
+func br() {
+  add("\n")
+}
+
+func line(content: String) {
+
 }
 
 // MARK: - Main
 
-var result = ""
+title("emoji")
+br()
+line("Made with [Smile](https://github.com/onmyway133/Smile)")
+br()
 
 for (category, list) in emojiCategories {
+  br()
   header(category)
+  br()
 
   tag("table") {
     tag("colgroup") {
