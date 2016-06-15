@@ -56,6 +56,7 @@ func line(content: String) {
 title("emoji")
 br()
 line("- Made with [Smile](https://github.com/onmyway133/Smile)")
+br()
 line("- Run `xcrun swift -F Carthage/Build/Mac/ script.swift` to update")
 br()
 
