@@ -61,7 +61,7 @@ for (category, list) in emojiCategories {
       tag("tr") {
         tag("td", content: emoji)
         tag("td", content: alias(emoji: Character(emoji)) ?? "")
-        tag("td", content: name(emoji: Character(emoji)).joinWithSeparator(","))
+        tag("td", content: name(emoji: Character(emoji)).joinWithSeparator(", "))
       }
     }
   }
