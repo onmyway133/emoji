@@ -31,6 +31,7 @@ func table(cols: [String]) {
   add(cols.joinWithSeparator(" | "))
   br()
   add("---|---|---")
+  br()
 }
 
 func row(cols: [String]) {
@@ -86,6 +87,7 @@ for (category) in categories {
       maybeAlias != nil ? "`:\(maybeAlias!):`" : "",
       name(emoji: Character(emoji)).joinWithSeparator(", ")
     ])
+    br()
   }
 }
 
