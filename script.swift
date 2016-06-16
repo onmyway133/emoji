@@ -23,20 +23,16 @@ func add(string: String) {
   result += string
 }
 
-func tag(name: String, @noescape block: () -> Void) {
-  add("<\(name)>")
-  block()
-  add("</\(name)>")
-}
-
-func tag(name: String, content: String) {
-  add("<\(name)>")
-  add(content)
-  add("</\(name)>")
-}
-
 func header(content: String) {
   add("## \(content)")
+}
+
+func table(cols: [String]) {
+  add(cols.joinWithSeparator(" | "))
+}
+
+func row(cols: [String]) {
+  add(cols.joinWithSeparator(" | "))
 }
 
 func title(content: String) {
@@ -77,29 +73,17 @@ for (category) in categories {
   header(category)
   br()
 
-  tag("table") {
-    tag("colgroup") {
-      3.times {
-        add("<col>")
-      }
-    }
+  table(["emoji", "alias", "name"])
 
-    tag("tr") {
-      tag("td", content: "emoji")
-      tag("td", content: "alias")
-      tag("td", content: "name")
-    }
+  let list = emojiCategories[category]!
+  list.forEach { emoji in
+    let maybeAlias = alias(emoji: Character(emoji))
 
-    let list = emojiCategories[category]!
-    list.forEach { emoji in
-      tag("tr") {
-        let maybeAlias = alias(emoji: Character(emoji))
-
-        tag("td", content: emoji)
-        tag("td", content: maybeAlias ?? "")
-        tag("td", content: name(emoji: Character(emoji)).joinWithSeparator(", "))
-      }
-    }
+    row([
+      emoji,
+      maybeAlias != nil ? "`:\(maybeAlias!):`" : "",
+      name(emoji: Character(emoji)).joinWithSeparator(", ")
+    ])
   }
 }
 
