@@ -96,7 +96,7 @@ for (category) in categories {
         let maybeAlias = alias(emoji: Character(emoji))
 
         tag("td", content: emoji)
-        tag("td", content: maybeAlias != nil ? ":\(maybeAlias!):" : "")
+        tag("td", content: maybeAlias ?? "")
         tag("td", content: name(emoji: Character(emoji)).joinWithSeparator(", "))
       }
     }
