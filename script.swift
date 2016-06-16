@@ -29,6 +29,7 @@ func header(content: String) {
 
 func table(cols: [String]) {
   add(cols.joinWithSeparator(" | "))
+  br()
   add("---|---|---")
 }
 
