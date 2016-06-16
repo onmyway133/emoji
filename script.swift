@@ -93,8 +93,10 @@ for (category) in categories {
     let list = emojiCategories[category]!
     list.forEach { emoji in
       tag("tr") {
+        let maybeAlias = alias(emoji: Character(emoji))
+
         tag("td", content: emoji)
-        tag("td", content: alias(emoji: Character(emoji)) ?? "")
+        tag("td", content: maybeAlias != nil ? ":\(maybeAlias!):" : "")
         tag("td", content: name(emoji: Character(emoji)).joinWithSeparator(", "))
       }
     }
