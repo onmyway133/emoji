@@ -71,6 +71,14 @@ let categories = Array(emojiCategories.keys).sort { c1, c2 in
   return c1 > c2
 }
 
+line("# Contents")
+br()
+
+for category in categories {
+  line("- [\(category)](#\(category))")
+  br()
+}
+
 for (category) in categories {
   br()
   header(category)

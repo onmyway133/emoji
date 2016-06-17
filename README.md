@@ -1,6 +1,12 @@
 # emoji
 - Made with [Smile](https://github.com/onmyway133/Smile)
 - Run `xcrun swift -F Carthage/Build/Mac/ script.swift` to update
+# Contents
+- [objects](#objects)
+- [people](#people)
+- [symbols](#symbols)
+- [places](#places)
+- [nature](#nature)
 
 ## objects
 emoji | alias | name
