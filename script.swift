@@ -72,7 +72,7 @@ let categories = Array(emojiCategories.keys).sort { c1, c2 in
 }
 
 br()
-line("# Contents")
+line("## Contents")
 br()
 br()
 
