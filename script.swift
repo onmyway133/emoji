@@ -71,7 +71,9 @@ let categories = Array(emojiCategories.keys).sort { c1, c2 in
   return c1 > c2
 }
 
+br()
 line("# Contents")
+br()
 br()
 
 for category in categories {
