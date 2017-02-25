@@ -8,7 +8,7 @@ import Smile
 // MARK: - Extension
 
 extension Int {
-  func times(@noescape block: () -> Void) {
+  func times(block: () -> Void) {
     for _ in 0..<self {
       block()
     }
@@ -24,42 +24,42 @@ func add(string: String) {
 }
 
 func header(content: String) {
-  add("## \(content)")
+  add(string: "## \(content)")
 }
 
 func table(cols: [String]) {
-  add(cols.joinWithSeparator(" | "))
+  add(string: cols.joined(separator: " | "))
   br()
-  add("---|---|---")
+  add(string: "---|---|---")
   br()
 }
 
 func row(cols: [String]) {
-  add(cols.joinWithSeparator(" | "))
+  add(string: cols.joined(separator: " | "))
 }
 
 func title(content: String) {
-  add("# \(content)")
+  add(string: "# \(content)")
 }
 
 func br() {
-  add("\n")
+  add(string: "\n")
 }
 
 func line(content: String) {
-  add(content)
+  add(string: content)
 }
 
 // MARK: - Main
 
-title("emoji")
+title(content: "emoji")
 br()
-line("- Made with [Smile](https://github.com/onmyway133/Smile)")
+line(content: "- Made with [Smile](https://github.com/onmyway133/Smile)")
 br()
-line("- Run `xcrun swift -F Carthage/Build/Mac/ script.swift` to update")
+line(content: "- Run `xcrun swift -F Carthage/Build/Mac/ script.swift` to update")
 br()
 
-let categories = Array(emojiCategories.keys).sort { c1, c2 in
+let categories = Array(emojiCategories.keys).sorted { c1, c2 in
   if c1 == "people" {
     return true
   }
@@ -72,30 +72,30 @@ let categories = Array(emojiCategories.keys).sort { c1, c2 in
 }
 
 br()
-line("## Contents")
+line(content: "## Contents")
 br()
 br()
 
 for category in categories {
-  line("- [\(category)](#\(category))")
+  line(content: "- [\(category)](#\(category))")
   br()
 }
 
 for (category) in categories {
   br()
-  header(category)
+  header(content: category)
   br()
 
-  table(["emoji", "alias", "name"])
+  table(cols: ["emoji", "alias", "name"])
 
   let list = emojiCategories[category]!
   list.forEach { emoji in
-    let maybeAlias = alias(emoji: Character(emoji))
+    let maybeAlias = alias(emoji: emoji)
 
-    row([
+    row(cols: [
       emoji,
       maybeAlias != nil ? "`:\(maybeAlias!):`" : "",
-      name(emoji: Character(emoji)).joinWithSeparator(", ")
+      name(emoji: emoji).joined(separator: ", ")
     ])
     br()
   }
@@ -104,7 +104,7 @@ for (category) in categories {
 // MARK: - Write
 
 do {
-  try result.writeToFile("README.md", atomically: true, encoding: NSUTF8StringEncoding)
+  try result.write(toFile: "README.md", atomically: true, encoding: String.Encoding.utf8)
 } catch {
   print("something goes wrong")
 }
