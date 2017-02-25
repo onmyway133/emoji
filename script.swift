@@ -59,24 +59,23 @@ br()
 line(content: "- Run `xcrun swift -F Carthage/Build/Mac/ script.swift` to update")
 br()
 
-let categories = Array(emojiCategories.keys).sorted { c1, c2 in
-  if c1 == "people" {
-    return true
-  }
-
-  if c1 == "objects" {
-    return true
-  }
-
-  return c1 > c2
+// People first
+var categories = Array(emojiCategories.keys)
+if let index = categories.index(where: { $0 == "people" }) {
+  categories.remove(at: index)
 }
 
+categories.insert("people", at: 0)
+
+// Contents
 br()
 line(content: "## Contents")
 br()
 br()
 
+// List
 for category in categories {
+  print(category)
   line(content: "- [\(category)](#\(category))")
   br()
 }
